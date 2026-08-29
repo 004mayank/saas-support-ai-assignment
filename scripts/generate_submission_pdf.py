@@ -442,11 +442,7 @@ def build_story():
         drawing,
     ]], colWidths=[130 * mm, 38 * mm])
     access.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,-1), colors.HexColor("#F2F5F1")), ("BOX", (0,0), (-1,-1), .5, LINE), ("VALIGN", (0,0), (-1,-1), "MIDDLE"), ("LEFTPADDING", (0,0), (-1,-1), 5 * mm), ("RIGHTPADDING", (0,0), (-1,-1), 5 * mm), ("TOPPADDING", (0,0), (-1,-1), 5 * mm), ("BOTTOMPADDING", (0,0), (-1,-1), 5 * mm)]))
-    story.extend([
-        access,
-        Spacer(1, 7 * mm),
-        card([P("Submission note", "h3"), P("The hosted application URL and demo-video link are supplied alongside this PDF. All links should be checked again immediately before final platform submission.", "body")], background=STONE),
-    ])
+    story.append(access)
     return story
 
 
