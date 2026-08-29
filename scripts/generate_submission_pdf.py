@@ -68,7 +68,7 @@ class LabelPill(Flowable):
         self.text = text.upper()
         self.kind = kind
         self.width = width
-        self.height = 7 * mm
+        self.height = 8 * mm
 
     def draw(self):
         palette = {
@@ -81,8 +81,8 @@ class LabelPill(Flowable):
         self.canv.setFillColor(background)
         self.canv.roundRect(0, 0, self.width, self.height, self.height / 2, stroke=0, fill=1)
         self.canv.setFillColor(foreground)
-        self.canv.setFont(FONT_BOLD, 7)
-        self.canv.drawCentredString(self.width / 2, 2.35 * mm, self.text)
+        self.canv.setFont(FONT_BOLD, 8.5)
+        self.canv.drawCentredString(self.width / 2, 2.65 * mm, self.text)
 
 
 class CoverDiagram(Flowable):
@@ -103,18 +103,18 @@ class CoverDiagram(Flowable):
         c.circle(center_x, center_y, 21 * mm, stroke=1, fill=0)
         c.setDash()
         cards = [
-            (center_x - 52 * mm, "SKILL", "Reusable procedure", SAGE, GREEN_DARK),
-            (center_x - 16 * mm, "AGENT", "Bounded investigation", BLUE_SOFT, BLUE),
-            (center_x + 20 * mm, "NEITHER", "Deterministic control", STONE, colors.HexColor("#6F6755")),
+            (center_x - 53 * mm, "SKILL", "Reusable procedure", SAGE, GREEN_DARK),
+            (center_x - 17 * mm, "AGENT", "Bounded investigation", BLUE_SOFT, BLUE),
+            (center_x + 19 * mm, "NEITHER", "Deterministic control", STONE, colors.HexColor("#6F6755")),
         ]
         for x, label, note, fill, text in cards:
             c.setFillColor(fill)
-            c.roundRect(x, center_y - 13 * mm, 32 * mm, 26 * mm, 4 * mm, stroke=0, fill=1)
+            c.roundRect(x, center_y - 14 * mm, 34 * mm, 28 * mm, 4 * mm, stroke=0, fill=1)
             c.setFillColor(text)
-            c.setFont(FONT_BOLD, 9)
-            c.drawCentredString(x + 16 * mm, center_y + 2 * mm, label)
-            c.setFont(FONT, 6.2)
-            c.drawCentredString(x + 16 * mm, center_y - 4 * mm, note)
+            c.setFont(FONT_BOLD, 11)
+            c.drawCentredString(x + 17 * mm, center_y + 2.5 * mm, label)
+            c.setFont(FONT, 8)
+            c.drawCentredString(x + 17 * mm, center_y - 4.5 * mm, note)
 
 
 class SectionRule(Flowable):
@@ -134,6 +134,7 @@ def styles():
         "cover_kicker": ParagraphStyle("cover_kicker", fontName=FONT_BOLD, fontSize=8, leading=10, textColor=LIME, spaceAfter=7 * mm, letterSpacing=1.2),
         "cover_title": ParagraphStyle("cover_title", fontName=FONT_BOLD, fontSize=32, leading=34, textColor=WHITE, spaceAfter=6 * mm),
         "cover_sub": ParagraphStyle("cover_sub", fontName=FONT, fontSize=11, leading=17, textColor=colors.HexColor("#BCC8C0"), spaceAfter=8 * mm),
+        "cover_note": ParagraphStyle("cover_note", fontName=FONT, fontSize=9.2, leading=13, textColor=colors.HexColor("#B8C4BC")),
         "h1": ParagraphStyle("h1", fontName=FONT_BOLD, fontSize=22, leading=26, textColor=INK, spaceAfter=5 * mm),
         "h2": ParagraphStyle("h2", fontName=FONT_BOLD, fontSize=13, leading=16, textColor=GREEN_DARK, spaceBefore=3 * mm, spaceAfter=2.5 * mm),
         "h3": ParagraphStyle("h3", fontName=FONT_BOLD, fontSize=9, leading=12, textColor=INK, spaceBefore=2 * mm, spaceAfter=1.5 * mm),
@@ -222,7 +223,7 @@ def build_story():
         Spacer(1, 9 * mm),
         CoverDiagram(),
         Spacer(1, 7 * mm),
-        P("Prepared as a single-user, provider-agnostic project submission. All customer, policy, pricing, ticket, and changelog data is fictional.", "small"),
+        P("Prepared as a single-user, provider-agnostic project submission. All customer, policy, pricing, ticket, and changelog data is fictional.", "cover_note"),
         PageBreak(),
     ])
 
