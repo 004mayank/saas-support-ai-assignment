@@ -4,7 +4,7 @@
 from pathlib import Path
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_LEFT
+from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
@@ -139,14 +139,16 @@ def styles():
         "h2": ParagraphStyle("h2", fontName=FONT_BOLD, fontSize=13, leading=16, textColor=GREEN_DARK, spaceBefore=3 * mm, spaceAfter=2.5 * mm),
         "h3": ParagraphStyle("h3", fontName=FONT_BOLD, fontSize=9, leading=12, textColor=INK, spaceBefore=2 * mm, spaceAfter=1.5 * mm),
         "kicker": ParagraphStyle("kicker", fontName=FONT_BOLD, fontSize=7, leading=9, textColor=GREEN, spaceAfter=2.5 * mm, letterSpacing=1),
-        "body": ParagraphStyle("body", fontName=FONT, fontSize=8.6, leading=13, textColor=INK, spaceAfter=2.5 * mm),
-        "small": ParagraphStyle("small", fontName=FONT, fontSize=7.2, leading=10.5, textColor=MUTED),
-        "bullet": ParagraphStyle("bullet", fontName=FONT, fontSize=8.2, leading=12, textColor=INK, leftIndent=4 * mm, firstLineIndent=-3 * mm, bulletIndent=0, spaceAfter=1.5 * mm),
+        "body": ParagraphStyle("body", fontName=FONT, fontSize=8.6, leading=13, textColor=INK, spaceAfter=2.5 * mm, alignment=TA_JUSTIFY),
+        "small": ParagraphStyle("small", fontName=FONT, fontSize=7.2, leading=10.5, textColor=MUTED, alignment=TA_JUSTIFY),
+        "body_left": ParagraphStyle("body_left", fontName=FONT, fontSize=8.6, leading=13, textColor=INK, spaceAfter=2.5 * mm, alignment=TA_LEFT),
+        "small_left": ParagraphStyle("small_left", fontName=FONT, fontSize=7.2, leading=10.5, textColor=MUTED, alignment=TA_LEFT),
+        "bullet": ParagraphStyle("bullet", fontName=FONT, fontSize=8.2, leading=12, textColor=INK, leftIndent=4 * mm, firstLineIndent=-3 * mm, bulletIndent=0, spaceAfter=1.5 * mm, alignment=TA_JUSTIFY),
         "callout": ParagraphStyle("callout", fontName=FONT_BOLD, fontSize=10, leading=14, textColor=GREEN_DARK, alignment=TA_LEFT),
         "code": ParagraphStyle("code", fontName="Courier", fontSize=6.3, leading=8.7, textColor=colors.HexColor("#324039"), leftIndent=3 * mm, rightIndent=3 * mm, spaceBefore=2 * mm, spaceAfter=2 * mm),
         "table_head": ParagraphStyle("table_head", fontName=FONT_BOLD, fontSize=7, leading=9, textColor=colors.HexColor("#748078")),
-        "table": ParagraphStyle("table", fontName=FONT, fontSize=7.1, leading=10, textColor=INK),
-        "table_bold": ParagraphStyle("table_bold", fontName=FONT_BOLD, fontSize=7.2, leading=10, textColor=INK),
+        "table": ParagraphStyle("table", fontName=FONT, fontSize=7.1, leading=10, textColor=INK, alignment=TA_JUSTIFY),
+        "table_bold": ParagraphStyle("table_bold", fontName=FONT_BOLD, fontSize=7.2, leading=10, textColor=INK, alignment=TA_JUSTIFY),
         "center": ParagraphStyle("center", parent=base["BodyText"], fontName=FONT, fontSize=7.5, leading=10, textColor=MUTED, alignment=TA_CENTER),
     }
 
@@ -167,6 +169,7 @@ def card(flowables, background=WHITE, border=LINE, padding=5 * mm, width=170 * m
     table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), background),
         ("BOX", (0, 0), (-1, -1), 0.6, border),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (-1, -1), padding),
         ("RIGHTPADDING", (0, 0), (-1, -1), padding),
         ("TOPPADDING", (0, 0), (-1, -1), padding),
@@ -264,14 +267,39 @@ def build_story():
         P("Each submitted artifact accepts an explicit input and returns a bounded output. None listens to a queue, schedules itself, calls another artifact, mutates customer systems, or sends a message.", "body"),
         Spacer(1, 3 * mm),
     ])
-    cards = []
+    scope_cards = []
+    scope_fills = []
     for title, prompt, outcome, fill in [
-        ("1. Deterministic?", "Must it execute instantly and identically every time?", "Use ordinary rules or software. This is Neither.", STONE),
+        ("1. Deterministic<br/>control?", "Must it execute instantly and identically every time?", "Use deterministic rules or ordinary software. This capability is Neither.", STONE),
         ("2. Stateless procedure?", "Does it apply reusable domain guidance to one supplied input?", "Package the guidance, references, and validator as a Skill.", SAGE),
         ("3. Bounded investigation?", "Must it reconcile sources, branch, or manage uncertainty?", "Create a read-only Agent with the minimum input and tool scope.", BLUE_SOFT),
     ]:
-        cards.append(card([P(title, "h2"), P(prompt, "body"), P(outcome, "small")], background=fill, padding=4 * mm, width=52 * mm))
-    story.append(Table([[cards[0], cards[1], cards[2]]], colWidths=[56.5 * mm] * 3, style=[("VALIGN", (0, 0), (-1, -1), "TOP"), ("LEFTPADDING", (0, 0), (-1, -1), 0), ("RIGHTPADDING", (0, 0), (-1, -1), 2 * mm)]))
+        scope_cards.append([P(title, "h2"), P(prompt, "body_left"), P(outcome, "small_left")])
+        scope_fills.append(fill)
+    scope_table = Table(
+        [[scope_cards[0], "", scope_cards[1], "", scope_cards[2]]],
+        colWidths=[52 * mm, 4.75 * mm, 52 * mm, 4.75 * mm, 52 * mm],
+        rowHeights=[41 * mm],
+        hAlign="LEFT",
+    )
+    scope_style = [
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+    ]
+    for column, fill in zip((0, 2, 4), scope_fills):
+        scope_style.extend([
+            ("BACKGROUND", (column, 0), (column, 0), fill),
+            ("BOX", (column, 0), (column, 0), 0.6, LINE),
+            ("LEFTPADDING", (column, 0), (column, 0), 4 * mm),
+            ("RIGHTPADDING", (column, 0), (column, 0), 4 * mm),
+            ("TOPPADDING", (column, 0), (column, 0), 4 * mm),
+            ("BOTTOMPADDING", (column, 0), (column, 0), 4 * mm),
+        ])
+    scope_table.setStyle(TableStyle(scope_style))
+    story.append(scope_table)
     story.extend([
         Spacer(1, 7 * mm),
         P("Explicit boundaries", "h2"),
