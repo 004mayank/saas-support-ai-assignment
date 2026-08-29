@@ -1,0 +1,4 @@
+interface:
+  display_name: "Policy-safe Reply"
+  short_description: "Draft on-brand replies grounded in policy"
+  default_prompt: "Use $draft-policy-safe-reply to draft a support reply grounded only in the supplied policy."

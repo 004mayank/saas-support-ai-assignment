@@ -1,0 +1,3 @@
+The first standalone Skill drafts policy-safe replies. Its input is a customer ticket plus the current policy snapshot. The example is a renewal refund request. The policy says renewals are non-refundable unless there is a duplicate charge or a billing error, and neither condition applies.
+
+When I run the Skill, it writes a calm, direct customer reply without inventing a refund, settlement date, or alternative price. It also returns a grounding check that names the policy version, lists any monetary claim, and tells the reviewer whether human approval is still needed. A bundled validator checks the required sections, discouraged tone phrases, and every monetary token against the supplied policy. The Skill drafts only. It cannot send the reply or change the account.

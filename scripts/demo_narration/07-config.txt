@@ -1,0 +1,3 @@
+The Config screen makes the project usable with different models without changing code. A user can select OpenAI, Anthropic, Google Gemini, OpenRouter, Ollama, or any custom endpoint that implements OpenAI-compatible chat completions. The model, base URL, and temperature are configurable.
+
+The API key is kept in browser session storage, not in the project database, and a request runs only when the user clicks a workspace button. Demo mode remains the default and makes the entire submission testable without credentials. The interface also includes a persistent dark mode, shown here. It follows the system preference on the first visit and applies a dedicated dark palette to navigation, cards, form fields, outputs, and mobile layouts.

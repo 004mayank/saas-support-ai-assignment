@@ -1,0 +1,20 @@
+{
+  "ticket_id": "SUP-1082",
+  "scores": {
+    "resolution": 12,
+    "accuracy_policy": 5,
+    "communication": 15,
+    "ownership": 5,
+    "process_records": 4
+  },
+  "commercial_claim_cap": true,
+  "total": 41,
+  "rating": "Fails standard",
+  "evidence": [
+    "Unsupported promise: engineering will fix it by tomorrow.",
+    "Unsupported commercial claim: refund $200.",
+    "No owner, diagnostic request, or follow-up time was supplied."
+  ],
+  "coaching_action": "Collect the import job ID and logs, avoid unsupported promises, and retain ownership through escalation.",
+  "confidence": "high"
+}

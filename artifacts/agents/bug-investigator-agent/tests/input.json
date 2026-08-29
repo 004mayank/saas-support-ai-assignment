@@ -1,0 +1,16 @@
+{
+  "report": {
+    "id": "SUP-1117",
+    "summary": "CSV export from Analytics stalls at 92% for date ranges over 90 days",
+    "environment": {"plan": "Growth", "browser": "Chrome 127", "workspace_region": "EU", "app_version": "web-2026.08.27"},
+    "steps": ["Open Analytics", "Choose a 120-day range", "Select Export CSV"],
+    "expected": "CSV download starts",
+    "actual": "Progress remains at 92% for at least 15 minutes; no file downloads",
+    "frequency": "3 of 3 attempts",
+    "attachments": ["network-har-redacted.zip"]
+  },
+  "changelog": [
+    {"id": "KI-224", "title": "PDF exports can stall at 90% in Safari", "status": "monitoring", "affected": "Safari 17, PDF only"},
+    {"id": "FIX-812", "title": "Resolved CSV export timeout for ranges over one year", "status": "fixed", "fixed_in": "web-2026.07.14"}
+  ]
+}

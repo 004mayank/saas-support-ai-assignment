@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["report", "changelog"],
+  "properties": {
+    "report": {"type": "object", "required": ["id", "summary", "environment", "steps", "expected", "actual"]},
+    "changelog": {"type": "array", "items": {"type": "object", "required": ["id", "title", "status"]}}
+  },
+  "additionalProperties": false
+}

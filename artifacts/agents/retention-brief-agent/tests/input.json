@@ -1,0 +1,22 @@
+{
+  "account": {
+    "id": "AC-204",
+    "name": "Northstar Labs",
+    "plan": "Growth",
+    "arr_usd": 17880,
+    "renewal_date": "2026-09-30",
+    "risk_flag": "CSM flagged after sponsor departure"
+  },
+  "billing": [
+    {"id": "INV-883", "date": "2026-08-01", "status": "paid", "days_late": 12},
+    {"id": "INV-841", "date": "2026-07-01", "status": "paid", "days_late": 0}
+  ],
+  "usage": [
+    {"date": "2026-06-30", "weekly_active_users": 42, "automation_runs": 1280},
+    {"date": "2026-08-24", "weekly_active_users": 17, "automation_runs": 410}
+  ],
+  "tickets": [
+    {"id": "SUP-991", "date": "2026-08-12", "topic": "SSO lockouts", "status": "closed", "reopens": 2, "csat": 2},
+    {"id": "SUP-944", "date": "2026-07-22", "topic": "report export timeout", "status": "closed", "reopens": 0, "csat": 4}
+  ]
+}

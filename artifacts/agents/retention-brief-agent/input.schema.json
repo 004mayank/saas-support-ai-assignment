@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["account", "billing", "usage", "tickets"],
+  "properties": {
+    "account": {"type": "object", "required": ["id", "name", "plan", "renewal_date"]},
+    "billing": {"type": "array", "items": {"type": "object"}},
+    "usage": {"type": "array", "items": {"type": "object"}},
+    "tickets": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}

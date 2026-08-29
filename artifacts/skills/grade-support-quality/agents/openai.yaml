@@ -1,0 +1,4 @@
+interface:
+  display_name: "Support QA Grader"
+  short_description: "Grade support tickets with a fixed rubric"
+  default_prompt: "Use $grade-support-quality to grade this closed support ticket and explain the score."
