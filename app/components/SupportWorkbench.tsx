@@ -422,7 +422,7 @@ function Evidence() {
           <p>Realistic mock inputs, expected outputs, validator checks, and no hidden coordinator.</p>
         </div>
         <div className="evidence-actions">
-          <a className="secondary-button" href="/Support-Lab-Demo.mp4" target="_blank">Watch 6:49 demo <span>▶</span></a>
+          <a className="secondary-button" href="/Support-Lab-Demo.mp4" target="_blank">Watch 6:58 demo <span>▶</span></a>
           <a className="primary-button download-button" href="/SaaS-Support-AI-Submission.pdf" download>
             Download PDF <span>↓</span>
           </a>

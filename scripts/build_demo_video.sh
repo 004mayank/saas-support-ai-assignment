@@ -42,11 +42,14 @@ for index in "${!screens[@]}"; do
   say -v Samantha -r 158 -f "$NARRATION_DIR/${scripts[$index]}" -o "$audio"
   ffmpeg -loglevel error -y \
     -loop 1 -i "$SCREEN_DIR/${screens[$index]}" -i "$audio" \
-    -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2:color=0x0f1411,format=yuv420p" \
-    -c:v libx264 -preset veryfast -tune stillimage -r 24 \
+    -vf "scale=1920:1080:force_original_aspect_ratio=decrease:flags=lanczos,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=0x0f1411,setsar=1,format=yuv420p" \
+    -c:v libx264 -preset slow -crf 16 -profile:v high -level 4.2 -tune stillimage -r 30 \
     -c:a aac -b:a 160k -shortest -movflags +faststart "$segment"
   printf "file '%s'\n" "$segment" >> "$SEGMENT_DIR/segments.ffconcat"
 done
 
 ffmpeg -loglevel error -y -f concat -safe 0 -i "$SEGMENT_DIR/segments.ffconcat" -c copy -movflags +faststart "$FINAL_DIR/Support-Lab-Demo.mp4"
-ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "$FINAL_DIR/Support-Lab-Demo.mp4"
+ffprobe -v error \
+  -show_entries stream=index,codec_name,width,height,r_frame_rate,bit_rate \
+  -show_entries format=duration,size,bit_rate \
+  -of default=noprint_wrappers=1 "$FINAL_DIR/Support-Lab-Demo.mp4"

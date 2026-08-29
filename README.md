@@ -49,6 +49,6 @@ python3 artifacts/skills/grade-support-quality/scripts/validate_scorecard.py \
 - `artifacts/agents/` — standalone Agent specifications and fixtures
 - `artifacts/AI_USAGE.md` — AI-assisted and manually modified work
 - `output/pdf/SaaS-Support-AI-Submission.pdf` — final report after generation
-- `output/demo/Support-Lab-Demo.mp4` — narrated 6:49 standalone demo
+- `output/demo/Support-Lab-Demo.mp4` — narrated 6:58 standalone demo, captured from Chrome at 1080p
 
 All organizations, policies, prices, customers, tickets, and logs are fictional mock data.
