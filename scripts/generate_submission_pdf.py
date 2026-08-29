@@ -361,6 +361,7 @@ def build_story():
         code_card("SUP-1082 / failed import E-17\nAgent promises an engineering fix by tomorrow and a $200 refund,\nthen hands off without an owner, diagnostics, or follow-up."),
         P("Result", "h2"),
         code_card("41 / 100 - Fails standard\nResolution 12/30 | Accuracy 5/25 | Communication 15/20\nOwnership 5/15 | Process 4/10\nCommercial-claim cap applied: yes\nCoaching: collect job ID and logs; avoid unsupported promises; retain ownership."),
+        Spacer(1, 3 * mm),
         card([P("PASS", "callout"), P("Score ranges, cap, arithmetic, and evidence presence validated by validate_scorecard.py.", "small")], background=SAGE, border=colors.HexColor("#BCD8C8")),
         PageBreak(),
     ])
@@ -382,6 +383,7 @@ def build_story():
         code_card("Northstar Labs / Growth / USD 17,880 ARR / renewal 30 Sep 2026\nBilling: latest invoice 12 days late\nUsage: WAU 42 -> 17; automation runs 1,280 -> 410\nTickets: SSO issue reopened twice with 2/5 CSAT"),
         P("Result excerpt", "h2"),
         code_card("Risk evidence\n- WAU and automation volume fell by more than half.\n- INV-883 was paid 12 days late.\n- SUP-991 reopened twice and received 2/5 CSAT.\n\nCall plan\n1. Confirm new executive and operational owners.\n2. Ask which teams stopped using automations and why.\n3. Agree on an SSO recovery owner and adoption checkpoint."),
+        Spacer(1, 3 * mm),
         card([P("PASS", "callout"), P("All three source sections were traced. Motivations remained labeled hypotheses. No unapproved commercial term was introduced.", "small")], background=BLUE_SOFT, border=colors.HexColor("#BFD4DB")),
         PageBreak(),
     ])
@@ -403,6 +405,7 @@ def build_story():
         code_card("SUP-1117: Analytics CSV export stalls at 92% for a 120-day range.\nChrome 127 / EU / web-2026.08.27 / 3 of 3 attempts.\nChangelog: Safari PDF stall at 90%; fixed CSV timeout for ranges over one year."),
         P("Result excerpt", "h2"),
         code_card("Classification: New or unmatched issue.\nTitle: Analytics CSV export stalls at 92% for ranges over 90 days in EU.\nEvidence: KI-224 conflicts on browser and export type; FIX-812 concerns\nranges over one year and is already fixed.\nMissing: workspace ID, job ID, timestamps, dataset size, console errors."),
+        Spacer(1, 3 * mm),
         card([P("PASS", "callout"), P("The Agent rejected a keyword-only match, preserved uncertainty, and used only supplied steps and evidence.", "small")], background=BLUE_SOFT, border=colors.HexColor("#BFD4DB")),
         PageBreak(),
     ])
