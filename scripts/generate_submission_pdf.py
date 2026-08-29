@@ -188,11 +188,6 @@ def page_header_footer(canvas, doc):
         canvas.circle(width + 5 * mm, height - 6 * mm, 58 * mm, fill=1, stroke=0)
         canvas.setFillColor(colors.HexColor("#1D3028"))
         canvas.circle(-12 * mm, 14 * mm, 42 * mm, fill=1, stroke=0)
-        canvas.setFillColor(LIME)
-        canvas.roundRect(18 * mm, height - 24 * mm, 10 * mm, 10 * mm, 3 * mm, fill=1, stroke=0)
-        canvas.setFillColor(GREEN_DARK)
-        canvas.setFont(FONT_BOLD, 10)
-        canvas.drawCentredString(23 * mm, height - 20.7 * mm, "SL")
         return
 
     canvas.setStrokeColor(LINE)
