@@ -2,6 +2,8 @@
 
 A single-user web application that demonstrates an evidence-led **Skill / Agent / Neither** architecture for five SaaS support capabilities. The app contains four independent workspaces, realistic mock fixtures, provider-agnostic LLM configuration, standalone evidence, and a downloadable submission PDF.
 
+**Live application:** https://support-lab-saas-ai.vercel.app
+
 ## Architecture
 
 | Capability | Decision | Built artifact |
@@ -22,6 +24,8 @@ npm run dev
 ```
 
 Open the URL printed by the development server. The application starts in deterministic demo mode and does not require an API key.
+
+The production app uses native Next.js server routes on Vercel, so demo runs and optional live-provider requests use the same server-side execution boundary.
 
 ## Bring your own LLM
 

@@ -589,7 +589,7 @@ export default function SupportWorkbench() {
   const [mobileNav, setMobileNav] = useState(false);
   const configSnapshot = useSyncExternalStore(subscribeToConfig, getConfigSnapshot, () => "");
   const config = useMemo(() => parseConfigSnapshot(configSnapshot), [configSnapshot]);
-  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, () => "light");
+  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, (): Theme => "light");
 
   const activeLabel = useMemo(
     () => navItems.find((item) => item.id === active)?.label || "Overview",
