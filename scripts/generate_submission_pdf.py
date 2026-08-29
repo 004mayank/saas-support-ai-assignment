@@ -395,8 +395,8 @@ def build_story():
     ]
     for case, input_text, behavior, result in tests:
         test_rows.append([P(case.replace("\n", "<br/>"), "table_bold"), P(input_text, "table"), P(behavior, "table"), LabelPill(result, "pass", 19 * mm)])
-    tests_table = Table(test_rows, colWidths=[35 * mm, 47 * mm, 66 * mm, 22 * mm], repeatRows=1)
-    tests_table.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,0), colors.HexColor("#EFF2EE")), ("GRID", (0,0), (-1,-1), .45, LINE), ("VALIGN", (0,0), (-1,-1), "MIDDLE"), ("LEFTPADDING", (0,0), (-1,-1), 3 * mm), ("RIGHTPADDING", (0,0), (-1,-1), 3 * mm), ("TOPPADDING", (0,0), (-1,-1), 4 * mm), ("BOTTOMPADDING", (0,0), (-1,-1), 4 * mm)]))
+    tests_table = Table(test_rows, colWidths=[35 * mm, 47 * mm, 60 * mm, 28 * mm], repeatRows=1)
+    tests_table.setStyle(TableStyle([("BACKGROUND", (0,0), (-1,0), colors.HexColor("#EFF2EE")), ("GRID", (0,0), (-1,-1), .45, LINE), ("VALIGN", (0,0), (-1,-1), "MIDDLE"), ("ALIGN", (3,1), (3,-1), "CENTER"), ("LEFTPADDING", (0,0), (-1,-1), 3 * mm), ("RIGHTPADDING", (0,0), (-1,-1), 3 * mm), ("TOPPADDING", (0,0), (-1,-1), 4 * mm), ("BOTTOMPADDING", (0,0), (-1,-1), 4 * mm)]))
     story.extend([
         tests_table,
         Spacer(1, 7 * mm),
