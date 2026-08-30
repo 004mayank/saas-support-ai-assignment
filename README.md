@@ -52,3 +52,4 @@ python3 artifacts/skills/grade-support-quality/scripts/validate_scorecard.py \
 - `output/demo/Support-Lab-Demo.mp4` — narrated 6:58 standalone demo, captured from Chrome at 1080p
 
 All organizations, policies, prices, customers, tickets, and logs are fictional mock data.
+go through the vercel app- https://support-lab-saas-ai.vercel.app/
