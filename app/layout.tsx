@@ -12,8 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("x-forwarded-host") || requestHeaders.get("host");
   const protocol = requestHeaders.get("x-forwarded-proto") || "https";
   const origin = host ? `${protocol}://${host}` : "http://localhost:3000";
-  const title = "Support Lab — Skill, Agent, or Neither";
-  const description = "Four focused AI tools for SaaS support. Zero orchestration.";
+  const title = "Support Lab Ops — Integrated SaaS Support AI";
+  const description = "A sandboxed support operations layer with deterministic escalation, AI workflows, schedules, connectors, and audited writes.";
   return {
     title,
     description,

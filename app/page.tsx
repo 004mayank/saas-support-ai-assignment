@@ -1,5 +1,5 @@
-import SupportWorkbench from "./components/SupportWorkbench";
+import IntegrationWorkbench from "./components/IntegrationWorkbench";
 
 export default function Home() {
-  return <SupportWorkbench />;
+  return <IntegrationWorkbench />;
 }
