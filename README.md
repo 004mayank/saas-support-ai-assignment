@@ -2,7 +2,7 @@
 
 A single-user web application that demonstrates an evidence-led **Skill / Agent / Neither** architecture for five SaaS support capabilities. The app contains four independent workspaces, realistic mock fixtures, provider-agnostic LLM configuration, standalone evidence, and a downloadable submission PDF.
 
-**Live application:** https://support-lab-saas-ai.vercel.app
+**Live application:** https://ixigo-travel-resolver-mayank.vercel.app/
 
 ## Architecture
 
